@@ -1,4 +1,4 @@
-package entity;
+package testspring.belajarapispring.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

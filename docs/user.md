@@ -1,143 +1,142 @@
 # User API Spec
 
-
-[//]: # (REGISTER USER)
 ## Register User
 
-- Endpoint : POST /api/users
+Endpoint : POST /api/users
 
-Request Body : 
+Request Body :
+
 ```json
 {
-  "username" : "rendi09",
-  "password" : "makan123",
-  "name" : "Rendi Jonathan Sibarani"
+  "username" : "rendi",
+  "password" : "password",
+  "name" : "Rendi Jonathan Sibarani" 
 }
 ```
 
-Response Body  (Success)
+Response Body (Success) :
+
 ```json
 {
   "data" : "OK"
 }
-``` 
+```
 
-Response Body  (Failed)
+Response Body (Failed) :
+
 ```json
 {
   "errors" : "Username must not blank, ???"
 }
 ```
 
-
-
-[//]: # (LOGIN USER)
-
 ## Login User
 
-- Endpoint : POST /api/auth/login
+Endpoint : POST /api/auth/login
 
 Request Body :
+
 ```json
 {
-  "username" : "rendi09",
-  "password" : "makan123"
+  "username" : "rendi",
+  "password" : "password" 
 }
 ```
 
-Response Body  (Success)
+Response Body (Success) :
+
 ```json
 {
   "data" : {
     "token" : "TOKEN",
-    "expiredAt": 1412431231 // millisecond
-
+    "expiredAt" : 2342342423423 // milliseconds
   }
 }
-``` 
+```
 
-Response Body  (Failed)
+Response Body (Failed, 401) :
+
 ```json
 {
   "errors" : "Username or password wrong"
 }
 ```
 
-
-
-[//]: # (GET USER)
 ## Get User
-- Endpoint : GET /api/users/current
 
-Request Header : 
+Endpoint : GET /api/users/current
+
+Request Header :
+
 - X-API-TOKEN : Token (Mandatory)
 
-Response Body  (Success)
+Response Body (Success) :
+
 ```json
 {
   "data" : {
-    "username" : "rendi09",
+    "username" : "rendi0908",
     "name" : "Rendi Jonathan Sibarani"
   }
 }
-``` 
+```
 
-Response Body  (Failed)
+Response Body (Failed, 401) :
+
 ```json
 {
-  "errors" : "Unauthorize"
+  "errors" : "Unauthorized"
 }
 ```
 
-
-[//]: # (UPDATE USER)
 ## Update User
 
-- Endpoint : PATCH /api/users/current
+Endpoint : PATCH /api/users/current
 
 Request Header :
+
 - X-API-TOKEN : Token (Mandatory)
 
-
 Request Body :
+
 ```json
 {
-  "name" : "Rendi Jonathan Sibarani", //put only if want to update
-  "password" : "makan123" //put only if want to update
+  "name" : "Rendi Jonathan Sibarani", // put if only want to update name
+  "password" : "new password" // put if only want to update password
 }
 ```
 
-Response Body  (Success)
+Response Body (Success) :
+
 ```json
 {
   "data" : {
-    "username" : "rendi09",
-    "name" : "Rendi Jonathan Sibarani"
+    "username" : "khannedy",
+    "name" : "Eko Kurniawan Khannedy"
   }
-}
-``` 
-
-Response Body  (Failed)
-```json
-{
-  "errors" : "Unauthorize"
 }
 ```
 
+Response Body (Failed, 401) :
 
+```json
+{
+  "errors" : "Unauthorized"
+}
+```
 
-[//]: # (UPDATE USER)
 ## Logout User
 
-- Endpoint : DELETE /api/auth/logout
+Endpoint : DELETE /api/auth/logout
 
 Request Header :
+
 - X-API-TOKEN : Token (Mandatory)
 
+Response Body (Success) :
 
-Response Body  (Success)
 ```json
 {
   "data" : "OK"
 }
-``` 
+```

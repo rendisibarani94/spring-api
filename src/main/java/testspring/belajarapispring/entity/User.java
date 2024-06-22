@@ -1,4 +1,4 @@
-package entity;
+package testspring.belajarapispring.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,6 +20,8 @@ public class User {
     private String username;
 
     private String password;
+
+    private String name;
 
     private String email;
 
